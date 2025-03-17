@@ -1,0 +1,33 @@
+<?php
+
+// Função para calcular a média das notas de um aluno
+function calcular_media($notas) {
+    return array_sum($notas) / count($notas);
+}
+
+// Lista para armazenar as médias dos alunos
+$medias = array();
+
+// Leitura das notas dos alunos
+for ($i = 1; $i <= 5; $i++) {  // Para 5 alunos
+    echo "Aluno $i:\n";
+    $notas = array();
+    
+    for ($j = 1; $j <= 4; $j++) {  // Para 4 notas de cada aluno
+        $nota = (float)readline("Digite a nota $j: ");
+        $notas[] = $nota;
+    }
+    
+    $media = calcular_media($notas);
+    $medias[] = $media;
+}
+
+// Encontrando a maior e a menor média
+$maior_media = max($medias);
+$menor_media = min($medias);
+
+// Exibindo os resultados
+echo "\nA maior média é: " . number_format($maior_media, 2, ',', '.') . "\n";
+echo "A menor média é: " . number_format($menor_media, 2, ',', '.') . "\n";
+
+?>
