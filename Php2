@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Dólares para Reais</title>
+</head>
+<body>
+    <h1>Calculadora de Dólares para Reais</h1>
+
+    <!-- Formulário para o usuário inserir os dados -->
+    <form method="POST">
+        <label for="dolares">Quantidade de dólares:</label>
+        <input type="number" step="0.01" name="dolares" id="dolares" required><br><br>
+
+        <label for="cotacao">Cotação do dólar:</label>
+        <input type="number" step="0.01" name="cotacao" id="cotacao" required><br><br>
+
+        <input type="submit" value="Calcular">
+    </form>
+
+    <?php
+    // Verifica se o formulário foi enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Recebe os dados do formulário
+        $dolares = floatval($_POST['dolares']);
+        $cotacao = floatval($_POST['cotacao']);
+
+        // Realiza o cálculo
+        $reais = $dolares * $cotacao;
+
+        // Exibe o resultado
+        echo "<h2>Resultado:</h2>";
+        echo "O valor correspondente em reais é: R$ " . number_format($reais, 2, ',', '.') . "<br>";
+    }
+    ?>
+</body>
+</html>
